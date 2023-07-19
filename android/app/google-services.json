@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "750850235110",
+    "project_id": "fbclub-f488f",
+    "storage_bucket": "fbclub-f488f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750850235110:android:8831b0de604f2fcaf3f927",
+        "android_client_info": {
+          "package_name": "com.fleaplay.fbclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750850235110-3kf76gfhamehj13rgvc3podponhj6h3l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnvwS2_MSIcD06VoswzoPwaQG8frog0Yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750850235110-3kf76gfhamehj13rgvc3podponhj6h3l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
