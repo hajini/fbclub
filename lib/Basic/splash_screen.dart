@@ -25,11 +25,12 @@ class SplashScreen extends StatelessWidget {
             const Spacer(),
             Container(
                 alignment: Alignment.center,
-                child: Image(image: const AssetImage('assets/images/first.png'),
-                    width: MediaQuery.of(context).size.width,
-                    height: (MediaQuery.of(context).size.width * 1.5),
+                child: Image(image: const AssetImage('assets/images/football_club.png'),
+                    width: MediaQuery.of(context).size.width/3,
+                    height: ((MediaQuery.of(context).size.width/3) * 1.5),
                     alignment: Alignment.center)
             ),
+            const Spacer(),
           ],
         ),
       ),

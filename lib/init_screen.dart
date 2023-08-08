@@ -24,7 +24,6 @@ class _InitScreen extends State<InitScreen> {
   @override
   Widget build(BuildContext context) {
 
-    print('111');
     if (!versionCheck) {
       Future<String> version = checkVersion();
       version.then((value) {
