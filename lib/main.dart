@@ -1,20 +1,31 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fbclub/basic/routes.dart';
-import 'package:fbclub/basic/splash_screen.dart';
 import 'package:fbclub/basic/theme.dart';
+import 'package:fbclub/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_phone_auth_handler/firebase_phone_auth_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'firebase_options.dart';
 
 Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized(); // 언어 localization
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform); // Firebase
 
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  runApp(const MyApp());
+  runApp(
+      EasyLocalization(
+        saveLocale: true,
+        useOnlyLangCode: true,
+        // 언어는 본인이 필요한 거에 맞게 작성(추후에 만들 json파일과 관련이 있음)
+        supportedLocales: const [Locale('en'), Locale('ko')],
+        path: 'assets/translations',
+        fallbackLocale: const Locale('en'),
+        child: const MyApp(),
+      )
+  );
   // runApp(
 
       // MultiBlocProvider(
@@ -51,12 +62,17 @@ class MyApp extends StatelessWidget {
       // DeviceOrientation.landscapeRight,
     ]);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Football Club',
-      initialRoute: SplashScreen.routeName,
-      routes: routes,
-      theme: theme(),
+    return FirebasePhoneAuthProvider(
+      child: MaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        debugShowCheckedModeBanner: false,
+        title: 'Football Club',
+        initialRoute: SplashScreen.routeName,
+        routes: routes,
+        theme: theme(),
+      ),
     );
   }
 }

@@ -9,15 +9,15 @@ import 'basic/alert_msg.dart';
 import 'basic/constants.dart';
 import 'basic/nav_item.dart';
 
-class InitScreen extends StatefulWidget {
+class MainScreen extends StatefulWidget {
 
-  static String routeName = '/init_screen';
+  static String routeName = '/main_screen';
 
   @override
-  _InitScreen createState() => _InitScreen();
+  _MainScreen createState() => _MainScreen();
 }
 
-class _InitScreen extends State<InitScreen> {
+class _MainScreen extends State<MainScreen> {
   int _selectedIndex = 0;
   bool versionCheck = false;
 

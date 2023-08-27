@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'package:fbclub/init_screen.dart';
+import 'package:fbclub/DataModel/user_coredata.dart';
+import 'package:fbclub/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'Login/login_screen.dart';
 
 class SplashScreen extends StatelessWidget {
 
@@ -12,7 +14,23 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     Timer(const Duration(seconds: 3), () {
-      _completeSplash(context, InitScreen());
+      Future<bool> cc = UserCoreData().getUserCoreDataFromLocal();
+      cc.then((result) {
+        if (result) {
+          // 로그인 정보가 device 에 있을 경우
+          // if 해당 device 가 서버 등록된 device 와 일치할 경우
+          print("move to main page");
+          _completeSplash(context, MainScreen());
+
+        } else {
+          // 로그인 정보가 device 에 없을 경우
+          // device가 일치하지 않을 경우
+          // 로그인 페이지로 이동
+          print("move to login page");
+          _completeSplash(context, LoginScreen());
+        }
+      });
+
     });
 
     return Scaffold(
